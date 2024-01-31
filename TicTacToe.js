@@ -7,6 +7,7 @@ const boardHeight = 540;
 const cellWidth = boardWidth / 3;
 const cellHeight = boardHeight / 3;
 const offset = 20;
+const radius = 60;
 /*
 00, 10, 20
 01, 11, 21
@@ -39,8 +40,8 @@ function drawBoard() {
 	drawLine(0, cellHeight * 3, boardWidth, cellHeight * 3);
 	ctx.closePath();
 	for (let y = 0; y < 1; y++) {
-		for (let x = 0; x < 1; x++) {
-			drawX(x, y);
+		for (let x = 0; x < 3; x++) {
+			drawO(x, y);
 		}
 	}
 }
@@ -57,7 +58,7 @@ function drawX(x, y) {
 }
 
 function drawO(x, y) {
-	//ctx.moveTo((x * cellWidth + cellWidth) / 2, (y * cellHeight + cellHeight - offset));
-	ctx.arc((x * cellWidth + cellWidth) / 2, (y * cellHeight + cellHeight - offset) / 2, 60, 0, 2 * Math.PI, true);
+	ctx.moveTo((x * cellWidth + cellWidth) / 2 + radius, (y * cellHeight + cellHeight) / 2);
+	ctx.arc((x * cellWidth + cellWidth) / 2, (y * cellHeight + cellHeight) / 2, radius, 0, 2 * Math.PI, true);
 	ctx.stroke();
 }
